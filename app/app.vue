@@ -434,6 +434,83 @@ async function copyLink() {
     setTimeout(() => (copied.value = false), 1800)
   }
 }
+
+// ================= SEO =================
+const SITE_URL = 'https://taro-landing.vercel.app'
+const OG_IMAGE = `${SITE_URL}/og-tarogpt.jpg`
+
+useSeoMeta({
+  title: 'Таролог онлайн — гадание на картах Таро с ИИ | TaroGPT',
+  description:
+      'Таролог онлайн в Telegram: AI-расклад Таро на любой вопрос. Ответ за 1 минуту. Оплата через Telegram Stars.',
+  ogTitle: 'Таролог онлайн — TaroGPT',
+  ogDescription:
+      'AI-гадание на картах Таро в Telegram. Персональный расклад за Telegram Stars.',
+  ogType: 'website',
+  ogUrl: SITE_URL,
+  ogImage: OG_IMAGE,
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Таролог онлайн — TaroGPT',
+  twitterDescription:
+      'AI-расклад Таро в Telegram. Ответ за 1 минуту.',
+  twitterImage: OG_IMAGE,
+})
+
+useHead({
+  link: [{ rel: 'canonical', href: SITE_URL }],
+  meta: [
+    { name: 'application-name', content: 'TaroGPT' },
+    { name: 'theme-color', content: '#7c3aed' },
+  ],
+})
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'Это гадание Таро онлайн бесплатно?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Каждый персональный расклад в TaroGPT стоит 25 Telegram Stars.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Где проходит расклад?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Расклад и диалог происходят в Telegram-боте. Сайт служит для описания и входа.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Как происходит оплата?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Оплата происходит через Telegram Stars — встроенную платёжную систему Telegram.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Какие вопросы можно задавать тарологу?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Любые: любовь, отношения, работа, деньги, выбор, ближайшее будущее.',
+            },
+          },
+        ],
+      }),
+    },
+  ],
+})
+
+
 </script>
 
 <style>
